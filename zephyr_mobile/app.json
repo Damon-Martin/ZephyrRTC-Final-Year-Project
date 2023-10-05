@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "zephyr_mobile",
+    "slug": "zephyr_mobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "zephyr_mobile"
+}
