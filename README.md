@@ -5,14 +5,8 @@ Mobile Versions are made using 'create-react-native-app zephyr_android --use-npm
 
 Web Version is made using
 
-To Run
-
-Web Version: npm start
-
-
-docker build . -t mdamon957/zepher_web
-
-Note When Running rememember to port map
+To Run: Run start all bash script
+./start-all.sh (Mac OS)
 
 
 ## References

@@ -1,0 +1,8 @@
+services:
+  auth:
+    image: node:18
+    volumes:
+      - ./auth-server:/usr/src/app
+    ports:
+      - "3000:3000"
+    command: sh -c "cd /usr/src/app && chmod +x start-auth.sh && ./start-auth.sh"
