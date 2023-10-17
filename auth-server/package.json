@@ -1,0 +1,31 @@
+{
+  "name": "auth-server",
+  "version": "0.0.1",
+  "description": "Authentification Server for ZephyrRTC, provides safe and secure authentification at cost. Built using NodeJS and Passport.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Damon-Martin/ZephyrRTC-Final-Year-Project.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Express",
+    "Passport",
+    "Authentification",
+    "Secure",
+    "Back-End",
+    "Micro-Service"
+  ],
+  "author": "Damon Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Damon-Martin/ZephyrRTC-Final-Year-Project/issues"
+  },
+  "homepage": "https://github.com/Damon-Martin/ZephyrRTC-Final-Year-Project#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
