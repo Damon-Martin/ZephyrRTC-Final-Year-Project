@@ -1,2 +1,3 @@
-npm init
+ls
+npm install
 node app.js
