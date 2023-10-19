@@ -1,8 +1,13 @@
+version: '0.0.1'
+
+# Each Micro Service
 services:
+  # Used for getting access-tokens for the client
   auth:
-    image: node:18
+    build:
+      context: ./auth-server
+      dockerfile: start-auth.Dockerfile
     volumes:
       - ./auth-server:/usr/src/app
     ports:
       - "3000:3000"
-    command: sh -c "cd /usr/src/app && chmod +x start-auth.sh && ./start-auth.sh"
