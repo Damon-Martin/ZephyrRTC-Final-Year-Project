@@ -1,4 +1,5 @@
 FROM node:18
+FROM ubuntu:20.04
 
 # Working directory mapped to local file in the compose file
 WORKDIR /usr/src/auth-server
@@ -9,4 +10,5 @@ RUN npm install
 
 EXPOSE 3000
 
-CMD ./start.sh
+CMD chmod +x start.sh
+ENTRYPOINT ["./start.sh"]

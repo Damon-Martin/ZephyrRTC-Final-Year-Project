@@ -1,0 +1,2 @@
+# Docker automatically installs packages: makes downloading repo faster
+node_modules/
