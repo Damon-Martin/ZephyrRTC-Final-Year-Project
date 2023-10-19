@@ -1,0 +1,21 @@
+name: Auth-Server CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  Auth-Tests:
+    runs-on: ubuntu-latest
+    
+    env:
+      working-directory: ./auth-server
+      
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup and run tests
+        working-directory: ./auth-server
+        run: |
+          npm test
