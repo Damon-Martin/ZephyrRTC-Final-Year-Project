@@ -1,13 +1,10 @@
 # ZephyrRTC-Final-Year-Project
 Video Confrencing Application: COMP 3000 Final Year Project
+Live Version URL: example-url.com/
 
-Mobile Versions are made using 'create-react-native-app zephyr_android --use-npm'
-
-Web Version is made using
-
-To Run: Run start all bash script
-./start-all.sh (Mac OS)
-
+How to Run:
+1) Start backend using bash script
+    * ./start-all.sh (Mac OS)
 
 ## References
 
