@@ -8,6 +8,15 @@ services:
       context: ./auth-server
       dockerfile: start-auth.Dockerfile
     volumes:
-      - ./auth-server:/usr/src/auth-server
+      - /auth-server
     ports:
       - "3000:3000"
+
+  front-end:
+    build:
+      context: ./front-end
+      dockerfile: front-end.Dockerfile
+    volumes:
+      - /front-end
+    ports:
+      - "80:3000"
