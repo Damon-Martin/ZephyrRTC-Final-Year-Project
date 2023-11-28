@@ -20,12 +20,3 @@ services:
       - /front-end
     ports:
       - "3000:3000"
-    
-  reverse-proxy:
-    build:
-      context: ./reverse-proxy
-      dockerfile: reverse-proxy.Dockerfile
-    volumes:
-      - /reverse-proxy
-    ports:
-      - "443:443"
