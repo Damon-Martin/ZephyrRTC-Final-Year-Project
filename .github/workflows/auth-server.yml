@@ -18,4 +18,5 @@ jobs:
       - name: Setup and run tests
         working-directory: ./auth-server
         run: |
+          docker compose up -d
           npm test
