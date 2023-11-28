@@ -20,3 +20,13 @@ services:
       - /front-end
     ports:
       - "3000:3000"
+  
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: nginx.Dockerfile
+    volumes:
+      - /nginx
+    ports:
+      - "80:80"
+      - "443:443"
