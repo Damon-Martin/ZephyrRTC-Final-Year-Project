@@ -1,6 +1,6 @@
 # ZephyrRTC-Final-Year-Project
 Video Confrencing Application: COMP 3000 Final Year Project
-Live Version URL: example-url.com/
+Live Version: zephyr-rtc.damon-martin.co.uk/
 
 How to Run:
 1) Start backend using bash script
