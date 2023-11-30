@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import {NextUIProvider} from "@nextui-org/react";
 import { Inter } from 'next/font/google'
 import './globals.css'
 
