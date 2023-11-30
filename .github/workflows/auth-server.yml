@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Running Docker Compose
-        run: docker-compose up -d
+        run: docker compose up -d
 
       - name: Running Unit Tests
         working-directory: ./auth-server
