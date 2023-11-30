@@ -2,29 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Light Mode */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+  --text-color: black;
+  --background-color: white;
 }
 
-/* Dark mode Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --text-color: white;
+    --background-color: rgb(52, 52, 52);
   }
 }
 
-/* Applying Presets to the Web App via the body */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--text-color);
+  background-color: var(--background-color);
 }

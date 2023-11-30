@@ -4,15 +4,17 @@ import {Button} from "@nextui-org/react";
 
 export default function LoginCard() {
     return (
-        <Card>
-            <form>
+        <form>
+            <div>
+                <h1 className="text-4xl py-5 text-white">ZephyrRTC</h1>
+            </div>
             <div>
                 <Input
                 isRequired
                 type="email"
                 label="Email"
                 defaultValue="junior@nextui.org"
-                className="max-w-xs"
+                className="min-w-xs"
                 />
             </div>
             <div>
@@ -21,18 +23,17 @@ export default function LoginCard() {
                 type="password"
                 label="Password"
                 defaultValue="Please enter your password"
-                className="max-w-xs"
+                className="min-w-xs"
                 />
             </div>
             <div>
-                <Button isDisabled color="primary">
-                Login
+                <Button isDisabled className="bg-black text-white pr-5">
+                    Login
                 </Button>
-                <Button isDisabled color="primary">
-                Register
+                <Button isDisabled className="bg-black text-white">
+                    Register
                 </Button>
             </div>
-            </form>
-        </Card>
+        </form>
     )
 };
