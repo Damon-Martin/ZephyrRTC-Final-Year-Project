@@ -14,9 +14,11 @@ jobs:
       working-directory: ./auth-server
       
     steps:
-      - uses: actions/checkout@v1
-      - name: Setup and run tests
+      - uses: actions/checkout@v2
+      - name: Running Docker Compose
+      
+      - run: docker compose up -d --build
+      - name: Running Tests
         working-directory: ./auth-server
         run: |
-          docker compose up -d
           npm test
