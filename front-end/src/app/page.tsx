@@ -2,7 +2,8 @@
 
 import LoginCard from "@/components/login/login-card";
 
-export default function Home() {
+export default function LoginPage() {
+  // This is only used in the login page which is distinct compared to other pages which are more similar with each other
   let loginPageStyle = {
     minHeight: '100vh',
     display: 'flex',
@@ -12,10 +13,10 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <div style={loginPageStyle}>
-        <LoginCard></LoginCard>
-      </div>
-    </main>
+    <div>
+        <div style={loginPageStyle}>
+          <LoginCard></LoginCard>
+        </div>
+    </div>
   );
 }
