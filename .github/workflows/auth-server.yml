@@ -1,4 +1,4 @@
-name: Auth-Server CI
+name: Auth Server CI CD
 
 on:
   push:
@@ -14,11 +14,16 @@ jobs:
       working-directory: ./auth-server
       
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Running Docker Compose
-      
-      - run: docker compose up -d --build
-      - name: Running Tests
+        run: docker-compose up -d --build
+
+      - name: Running Unit Tests
         working-directory: ./auth-server
-        run: |
-          npm test
+        run: npm test
+
+      - name: Running Integration Tests
+        working-directory: ./auth-server
+        run: npm test
