@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./src/app/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test:unit && npm run test:int",
+    "test:unit": "mocha ./src/tests/unit/dbo-situation-tests.js",
+    "test:int": "mocha ./src/tests/int/db-tests.js"
   },
   "repository": {
     "type": "git",
@@ -27,10 +29,13 @@
   },
   "homepage": "https://github.com/Damon-Martin/ZephyrRTC-Final-Year-Project#readme",
   "dependencies": {
-    "chai": "^4.3.10",
     "express": "^4.18.2",
     "mocha": "^10.2.0",
-    "mongoose": "^8.0.2",
     "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mongoose": "^8.0.2",
+    "sinon": "^17.0.1"
   }
 }
