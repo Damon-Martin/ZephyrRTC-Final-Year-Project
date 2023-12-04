@@ -16,13 +16,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Building Image
-        run: docker compose build
-
-      - name: Docker Hub Login
-        working-directory: ./auth-server
-        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }} docker.io
-
-      - name: Deploying to Docker Hub
-        working-directory: ./auth-server
-        run: docker-compose push damonmartin/comp3000-zephyr-rtc-final-year-project
+      - name: Deploying to VPS
+        run: |
+          ssh root@zephyr-rtc.damon-martin.co.uk
+          ${{ secrets.VPS_PASSWORD }}
+          cd my-projects/ZephyrRTC-Final-Year-Project
+          docker-compose down
+          cd ..
+          rm -r -f ./ZephyrRTC-Final-Year-Project
+          git clone git@github.com:Damon-Martin/ZephyrRTC-Final-Year-Project.git
+          cd ZephyrRTC-Final-Year-Project
+          docker compose up -d --build
