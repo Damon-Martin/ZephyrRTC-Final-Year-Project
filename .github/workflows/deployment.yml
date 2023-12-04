@@ -23,9 +23,6 @@ jobs:
         working-directory: ./auth-server
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }} docker.io
 
-      - name: Choosing Docker Hub Tag
-        run: docker-compose tag comp3000-zephyr-rtc-final-year-project damonmartin/comp3000-zephyr-rtc-final-year-project:your_image_tag
-
       - name: Deploying to Docker Hub
         working-directory: ./auth-server
-        run: docker-compose push
+        run: docker-compose push damonmartin/comp3000-zephyr-rtc-final-year-project
