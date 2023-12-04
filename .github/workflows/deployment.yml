@@ -16,14 +16,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: SSH into VPS
+      - name: Deploy to VPS via SSH
         run: |
           sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@zephyr-rtc.damon-martin.co.uk <<EOF
             cd my-projects/ZephyrRTC-Final-Year-Project
-            docker-compose down
+            docker compose down
             cd ..
             rm -r -f ./ZephyrRTC-Final-Year-Project
             git clone git@github.com:Damon-Martin/ZephyrRTC-Final-Year-Project.git
             cd ZephyrRTC-Final-Year-Project
-            docker-compose up -d --build
+            docker compose up -d --build
           EOF
