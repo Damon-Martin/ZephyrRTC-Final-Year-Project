@@ -25,4 +25,4 @@ jobs:
 
       - name: Deploying to Docker Hub
         working-directory: ./auth-server
-        run: docker-compose push damonmartin/comp3000-zephyr-rtc-final-year-project:v1.0.0
+        run: docker-compose push damonmartin/comp3000-zephyr-rtc-final-year-project:stable
