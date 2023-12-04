@@ -13,8 +13,7 @@ export default function LoginCard() {
                 isRequired
                 type="email"
                 label="Email"
-                defaultValue="junior@nextui.org"
-                className="min-w-xs"
+                className="min-w-xs pt-3"
                 />
             </div>
             <div>
@@ -22,15 +21,14 @@ export default function LoginCard() {
                 isRequired
                 type="password"
                 label="Password"
-                defaultValue="Please enter your password"
-                className="min-w-xs"
+                className="min-w-xs py-3"
                 />
             </div>
-            <div>
-                <Button isDisabled className="bg-black text-white pr-5">
+            <div className="flex gap-4 items-center">
+                <Button className="bg-black text-white">
                     Login
                 </Button>
-                <Button isDisabled className="bg-black text-white">
+                <Button className="bg-black text-white">
                     Register
                 </Button>
             </div>

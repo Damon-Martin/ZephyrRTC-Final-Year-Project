@@ -18,3 +18,11 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
 }
+
+
+
+/*************** Custom CSS Classes *********************/
+
+.bg-gradient-theme {
+  background: linear-gradient(to bottom, #FF00A8, #4542D8);
+}

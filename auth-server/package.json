@@ -4,7 +4,10 @@
   "description": "Authentification Server for ZephyrRTC, provides safe and secure authentification at cost. Built using NodeJS and Passport.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/app/index.js",
+    "test": "npm run test:unit && npm run test:int",
+    "test:unit": "mocha ./src/tests/unit/dbo-situation-tests.js",
+    "test:int": "mocha ./src/tests/int/db-tests.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,13 @@
   },
   "homepage": "https://github.com/Damon-Martin/ZephyrRTC-Final-Year-Project#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mocha": "^10.2.0",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mongoose": "^8.0.2",
+    "sinon": "^17.0.1"
   }
 }
