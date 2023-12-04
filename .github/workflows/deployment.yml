@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  Auth-Tests:
+  Deployment:
     runs-on: ubuntu-latest
     
     env:
