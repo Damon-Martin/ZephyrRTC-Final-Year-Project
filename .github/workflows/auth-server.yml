@@ -20,11 +20,12 @@ jobs:
       - name: Running Docker Compose
         run: docker compose up -d
 
-      - name: Installing Node Modules
-        run: npm install
-
       - name: Waiting for all Services to Boot
-        run: sleep 30
+        run: sleep 60
+
+      - name: Installing Node Modules
+        working-directory: ./auth-server
+        run: npm install
         
       - name: Running Unit Tests
         working-directory: ./auth-server
