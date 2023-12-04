@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Building Image by Running
-        run: docker compose up -d
+        run: docker compose build
 
       - name: Docker Hub Login
         working-directory: ./auth-server
@@ -25,4 +25,4 @@ jobs:
 
       - name: Deploying to Docker Hub
         working-directory: ./auth-server
-        run: docker-compose push damonmartin/comp3000-zephyr-rtc-final-year-project:stable
+        run: docker-compose push damonmartin/comp3000-zephyr-rtc-final-year-project:v0.0.1
