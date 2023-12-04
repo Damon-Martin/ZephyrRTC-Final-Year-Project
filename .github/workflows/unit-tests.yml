@@ -1,0 +1,23 @@
+name: Auth Server CI CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  Auth-Tests:
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Installing Node Modules
+        working-directory: ./auth-server
+        run: npm install
+        
+      - name: Running Auth Server Integration Tests
+        working-directory: ./auth-server
+        run: npm run test:unit
