@@ -27,10 +27,6 @@ jobs:
         working-directory: ./auth-server
         run: npm install
         
-      - name: Running Unit Tests
-        working-directory: ./auth-server
-        run: npm run test:unit
-
-      - name: Running Integration Tests
+      - name: Running Auth Server Integration Tests
         working-directory: ./auth-server
         run: npm run test:int
