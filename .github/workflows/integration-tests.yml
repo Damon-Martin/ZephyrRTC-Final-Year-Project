@@ -1,4 +1,4 @@
-name: Auth Server CI CD
+name: Integration Tests
 
 on:
   push:
