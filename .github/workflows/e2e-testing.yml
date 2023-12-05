@@ -1,0 +1,29 @@
+name: E2E + Component Testing
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  Front-End:
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Installing Node Modules
+        working-directory: ./auth-server
+        run: npm install
+
+      - name: Running Docker Compose
+        run: docker compose up -d
+
+      - name: Waiting for all Services to Boot
+        run: sleep 60
+        
+      - name: Running Cypress Tests via cli
+        working-directory: ./auth-server
+        run: npm run test:cypress-cli
