@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Installing Node Modules
-        working-directory: ./auth-server
+        working-directory: ./front-end
         run: npm install
 
       - name: Running Docker Compose
@@ -23,10 +23,7 @@ jobs:
 
       - name: Waiting for all Services to Boot
         run: sleep 60
-        
-      - name: Installing Packages
-        run: npm install
 
       - name: Running Cypress Tests via cli
-        working-directory: ./auth-server
+        working-directory: ./front-end
         run: npm run test:cypress-cli
