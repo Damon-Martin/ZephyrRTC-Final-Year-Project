@@ -19,6 +19,8 @@ jobs:
           sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@zephyr-rtc.damon-martin.co.uk <<EOF
             cd my-projects/ZephyrRTC-Final-Year-Project
             docker compose down
+            docker image rm $(docker image ls -q | grep -v 'portainer')
+            docker volume prune -f
             cd ..
             rm -r -f ./ZephyrRTC-Final-Year-Project
             git clone git@github.com:Damon-Martin/ZephyrRTC-Final-Year-Project.git
