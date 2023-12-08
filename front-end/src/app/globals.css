@@ -3,26 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --text-color: black;
-  --background-color: white;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text-color: white;
-    --background-color: rgb(52, 52, 52);
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
 
 body {
-  color: var(--text-color);
-  background-color: var(--background-color);
-}
-
-
-
-/*************** Custom CSS Classes *********************/
-
-.bg-gradient-theme {
-  background: linear-gradient(to bottom, #FF00A8, #4542D8);
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
