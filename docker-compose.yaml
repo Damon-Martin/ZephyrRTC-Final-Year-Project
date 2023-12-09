@@ -6,27 +6,21 @@ services:
   auth:
     build:
       context: ./auth-server
-      dockerfile: start-auth.Dockerfile
-    volumes:
-      - /auth-server
+      dockerfile: .Dockerfile
     ports:
       - "4000:3000"
 
   front-end:
     build:
       context: ./front-end
-      dockerfile: front-end.Dockerfile
-    volumes:
-      - /front-end
+      dockerfile: .Dockerfile
     ports:
       - "3000:3000"
   
   nginx:
     build:
       context: ./nginx
-      dockerfile: nginx.Dockerfile
-    volumes:
-      - /nginx
+      dockerfile: .Dockerfile
     ports:
       - "80:80"
       - "443:443"
