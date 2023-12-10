@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test:cypress-gui": "cypress open", 
-    "test:cypress-e2e": "cypress run"
+    "test:cypress-e2e": "cypress run",
+    "test:cypress-component": "cypress run --component"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
