@@ -2,16 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { AuthRouter } = require('./routes/auth-router');
 
-
 const app = express();
 const port = 3000;
 
-const db_user = 'root';
-const db_pass = 'strong_password';
-const db_name = 'admin';
+const db_info = {
+  db_name: 'admin',
+  db_username: 'root',
+  db_pass: 'strong_password',
+}
 
 // MongoDB URI
-const db_uri = `mongodb://${db_user}:${db_pass}@mongo-db:27017/${db_name}`;
+const db_uri = `mongodb://${db_info.db_username}:${db_info.db_pass}@mongo-db:27017/${db_info.db_name}`;
 
 // Routing
 const authRouter = new AuthRouter("test_params_working");
