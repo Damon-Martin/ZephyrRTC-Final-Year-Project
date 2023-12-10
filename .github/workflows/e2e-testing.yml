@@ -1,4 +1,4 @@
-name: E2E + Component Testing
+name: E2E Testing
 
 on:
   push:
@@ -26,4 +26,4 @@ jobs:
 
       - name: Running Cypress Tests via cli
         working-directory: ./front-end
-        run: npm run test:cypress-cli
+        run: npm run test:cypress-e2e
