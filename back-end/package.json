@@ -1,0 +1,29 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Using the JWT, this will pass chats and friend data as json to the next js server which will render them as components",
+  "main": "./src/app/index.js",
+  "scripts": {
+    "start": "node ./src/app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Damon-Martin/ZephyrRTC-Final-Year-Project.git"
+  },
+  "keywords": [
+    "Express",
+    "MongoDB",
+    "NodeJS"
+  ],
+  "author": "Damon Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Damon-Martin/ZephyrRTC-Final-Year-Project/issues"
+  },
+  "homepage": "https://github.com/Damon-Martin/ZephyrRTC-Final-Year-Project#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3"
+  }
+}
