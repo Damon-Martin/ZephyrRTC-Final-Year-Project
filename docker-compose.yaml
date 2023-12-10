@@ -8,8 +8,20 @@ services:
       context: ./auth-server
       dockerfile: .Dockerfile
     ports:
+      - "3500:3000"
+
+  # Recieves JWT from front-end, checks jwt is legit with auth server
+  # This returns friend list data, chats all using json
+  back-end:
+    build:
+      context: ./back-end
+      dockerfile: .Dockerfile
+    ports:
       - "4000:3000"
 
+
+  # Signalling using Web Sockets passing internet data from client to peer using the ICE_FRAMEWORK with the signalling server
+  # Communicates with back-end to get chats, friend data. Could use a web socket or just using the api.
   front-end:
     build:
       context: ./front-end
