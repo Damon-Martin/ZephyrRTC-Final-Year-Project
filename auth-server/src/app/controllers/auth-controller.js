@@ -1,21 +1,16 @@
-const AuthController = (dbo) => {
-    this.dbo = dbo;
+// Manipulating DB
+class AuthController {
+    constructor(db_context) {
+        this.db_context = db_context;
+    }
 
-    // Returns Token + status code
-    const registerUser = (username, password) => {
+    register() {
+        return 'Registered';
+    }
 
-    };
-    // Returns status code & if successful access token
-    const authenticateLogin = (username, password) => {
-
-    };
-
-    // Returns Success Code
-    const authenticateToken = (accessToken) => {
-
-    };
+    login() {
+        return `User Logged In`;
+    }
 };
 
-module.exports(
-    AuthController
-);
+module.exports = {AuthController};

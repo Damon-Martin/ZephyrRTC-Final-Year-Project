@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Authentification Server for ZephyrRTC, provides safe and secure authentification at cost. Built using NodeJS and Passport.",
   "main": "app.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node ./src/app/index.js",
     "test": "npm run test:unit && npm run test:int",
