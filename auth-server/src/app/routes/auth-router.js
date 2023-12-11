@@ -10,12 +10,13 @@ class AuthRouter {
         let authController = new AuthController(db_context);
 
         // Mapping Endpoints to Controller functions
-        this.router.post('/register', (req, res) => {
-            res.send( authController.register() );
+        this.router.post('/register', async (req, res) => {
+            res.send( authController.register(req, res) );
         });
 
-        this.router.get('/login', (req, res) => {
-            res.send( authController.login() );
+        this.router.get('/login', async (req, res) => {
+            const response = await authController.login(req, res); // Passing request header and body
+            res.send( response );
         });
     }
 }
