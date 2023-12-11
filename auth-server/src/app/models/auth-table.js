@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const AuthSchema = new Schema({
   username: String, // String is shorthand for {type: String}
@@ -9,6 +9,6 @@ const AuthSchema = new Schema({
   registrationDate: { type: Date, default: Date.now },
 });
 
-module.exports(
-    AuthSchema
-);
+module.exports = {
+  AuthSchema
+};

@@ -11,13 +11,18 @@ class AuthRouter {
 
         // Mapping Endpoints to Controller functions
         this.router.post('/register', async (req, res) => {
-            const response = await authController.register(req, res);
-            res.send(response);
+            try {
+                await authController.register(req, res);
+            } 
+            catch (e) {
+                console.error(e);
+                res.status(500).send({ e: 'Internal Server Error' });
+            }
         });
 
         this.router.get('/login', async (req, res) => {
             try {
-                authController.login(req, res);
+                await authController.login(req, res);
             } 
             catch (e) {
                 console.error(e);
