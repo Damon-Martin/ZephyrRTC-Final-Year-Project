@@ -9,7 +9,7 @@ class AuthController {
     }
 
     async login(req, res) {
-        response = await this.checkLoginInDB(req, res);
+        let response = await this.checkLoginInDB(req, res);
         return response;
     }
 
