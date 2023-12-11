@@ -7,11 +7,11 @@ const port = 3000;
 
 // MongoDB Details
 const db_info = {
-    db_name: 'admin',
-    db_username: 'root',
-    db_pass: 'strong_password',
+    db_name: 'AuthDB',
+    db_username: 'ImportantAdmin',
+    db_pass: 'very_strong_password',
     db_uri: function () {
-        return `mongodb://${this.db_username}:${this.db_pass}@auth-db:27017/${this.db_name}`;
+        return `mongodb://${this.db_username}:${this.db_pass}@mongo-db:27017/${this.db_name}`;
     }
 }
 
