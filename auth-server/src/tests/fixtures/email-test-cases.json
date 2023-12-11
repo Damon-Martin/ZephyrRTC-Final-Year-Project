@@ -1,0 +1,65 @@
+[
+    {
+        "email": "example@em",
+        "isValid": false
+    },
+    {
+        "email": "example@email.com",
+        "isValid": true
+    },
+    {
+        "email": "@email.com",
+        "isValid": false
+    },
+    {
+        "email": "david12344321@gmail.com",
+        "isValid": true
+    },
+    {
+        "email": "user@example.co.uk",
+        "isValid": true
+    },
+    {
+        "email": "user@",
+        "isValid": false
+    },
+    {
+        "email": "",
+        "isValid": false
+    },
+    {
+        "email": "example email@email.com",
+        "isValid": false
+    },
+    {
+        "email": "exampleemail@emai l.com",
+        "isValid": false
+    },
+    {
+        "email": "exampleemail@emai l.com",
+        "isValid": false
+    },
+    {
+        "email": "example_email@email.com",
+        "isValid": true
+    },
+    {
+        "email": "example-email@email.com",
+        "isValid": true
+    },
+    {
+        "email": "exampleemail@ema-il.com",
+        "isValid": true
+    },
+    {
+        "email": "example-email@email.com",
+        "isValid": true
+    },
+    {
+        "email": "example£$(*&^%email@ema£il.com",
+        "isValid": false
+    }
+
+    
+
+]
