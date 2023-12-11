@@ -3,12 +3,14 @@ version: '3.8'
 # Each Micro Service
 services:
   # Used for getting access-tokens for the client
-  auth:
+  auth-server:
     build:
       context: ./auth-server
       dockerfile: .Dockerfile
     ports:
       - "3500:3000"
+    depends_on:
+      - auth-db
 
   # Recieves JWT from front-end, checks jwt is legit with auth server
   # This returns friend list data, chats all using json
@@ -34,11 +36,13 @@ services:
     image: mongo
     restart: always
     environment:
-      MONGO_INITDB_DATABASE: auth_db
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: strong_password
+      MONGO_INITDB_DATABASE: auth_db
     ports:
         - "27017:27017"
+    volumes:
+      - ./db-init/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
   nginx:
     build:
