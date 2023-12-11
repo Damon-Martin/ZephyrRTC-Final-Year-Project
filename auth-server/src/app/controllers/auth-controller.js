@@ -1,21 +1,21 @@
-const AuthController = (dbo) => {
-    this.dbo = dbo;
+const { response } = require("express");
 
-    // Returns Token + status code
-    const registerUser = (username, password) => {
+// Manipulating DB
+class AuthController {
+    constructor(db_context) {
+        this.db_context = db_context;
+    }
 
-    };
-    // Returns status code & if successful access token
-    const authenticateLogin = (username, password) => {
+    async register() {
+        return 'Registered';
+    }
 
-    };
-
-    // Returns Success Code
-    const authenticateToken = (accessToken) => {
-
-    };
+    async login(req, res) {
+        res.status(200).json({
+            "JWT": "MockJWT",
+            "TTL": new Date('10/05/23')
+        });
+    }
 };
 
-module.exports(
-    AuthController
-);
+module.exports = {AuthController};

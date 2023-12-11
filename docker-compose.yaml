@@ -29,6 +29,17 @@ services:
     ports:
       - "3000:3000"
   
+  # Seperate db for just Login Details: This is just placeholder db login details
+  auth-db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: auth_db
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: strong_password
+    ports:
+        - "27017:27017"
+
   nginx:
     build:
       context: ./nginx
