@@ -19,7 +19,22 @@ describe('Email Checker Unit Tests', () => {
 
             let test_msg = `Test Case ${i} failed`
             i++;
-            assert.equal(true, isValid, test_msg)
+            assert.equal(actual, expect, test_msg)
         })
+
+        it(`test-email-case-${i}-with-inverted-expectations`, () => {
+            // Arrange
+            let expect = !isValid
+            let authLogic = new AuthLogic();
+            
+            // Act
+            let actual = authLogic.isValidEmail(email)
+
+
+            let test_msg = `Test Case ${i} failed`
+            i++;
+            assert.notEqual(actual, expect, test_msg)
+        })
+        
     })
 });
