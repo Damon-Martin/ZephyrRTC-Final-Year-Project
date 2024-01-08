@@ -31,6 +31,7 @@
   "homepage": "https://github.com/Damon-Martin/ZephyrRTC-Final-Year-Project#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "mocha": "^10.2.0",
     "passport": "^0.7.0"
   },

@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+
 const { AuthModels } = require('../models/auth-table');
+const { TokenModels } = require('../models/tokens-table');
+
 
 // Manipulating DB
 class AuthController {
@@ -14,10 +18,15 @@ class AuthController {
 
             if (isRegFieldsNull && isRegFieldsEmpty) {
 
-                const regData = new AuthModels({ username, password });
-                const savedSong = await regData.save();
+                const regDb = new AuthModels({ username, password });
+                await regDb.save();
                 
-                res.status(200).json(`${username} ${savedSong}`);
+
+                const token = jwt.sign({ username }, 'secret_key_9381', { expiresIn: '12h' });
+                const TokenDb = new TokenModels({token});
+                await TokenDb.save();
+
+                res.status(200).json(`${token}`);
             }
             else {
                 res.status(400).json(`Empty Username or Password`);
