@@ -1,17 +1,20 @@
 const mongoose = require('mongoose');
+const AuthModel = require('../models/auth-table')
 const { AuthSchema } = require('../models/auth-table');
 
 // Manipulating DB
 class AuthController {
 
     async register(req, res) {
+        try {
+            if (req.body.username != null) {
+                res.status(200).json(`There is a username ${req.body.username}`);
+            }
+        }
+        catch (e) {
+            res.status(400).json(`Wrong Login Schema in POST REQ most likely`);
+        }
         
-        let registerUser = new this.RegistrationModel({
-            username: "test@email.com",
-            password: "strong_pass"
-        });
-
-        res.status(200).json(registerUser.toJSON());
     }
 
     async login(req, res) {
