@@ -7,8 +7,17 @@ class AuthController {
 
     async register(req, res) {
         try {
-            if (req.body.username != null) {
-                res.status(200).json(`There is a username ${req.body.username}`);
+            const { username, password } = req.body;
+
+            // Username Field Checks
+            let isRegFieldsNull = username != null && password != null;
+            let isRegFieldsEmpty = username.length != 0 && password.length != 0;
+
+            if (isRegFieldsNull && isRegFieldsEmpty) {
+                res.status(200).json(`There is a username ${username} ${password}`);
+            }
+            else {
+                res.status(400).json(`Empty Username or Password`);
             }
         }
         catch (e) {
