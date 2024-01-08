@@ -2,12 +2,11 @@ const express = require('express');
 const { AuthController } = require('../controllers/auth-controller');
 
 class AuthRouter {
-    constructor(db_context) {
-        this.db_context = db_context; // pass this to the controllers
+    constructor() {
         this.router = express.Router();
-
+        
         // Instantiating Controllers
-        let authController = new AuthController(db_context);
+        let authController = new AuthController();
 
         // Mapping Endpoints to Controller functions
         this.router.post('/register', async (req, res) => {

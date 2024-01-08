@@ -35,8 +35,12 @@ async function connectDb() {
 
     // Mapping Routing Files
     const authRouter = new AuthRouter("test_params_working");
-    app.use('/api/v1', authRouter.router);
+    
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
 
+    app.use('/api/v1', authRouter.router);
+    
     // Handling Disconnections Recursively
     mongoose.connection.on('disconnected', resolveConnection);
   } catch (e) {

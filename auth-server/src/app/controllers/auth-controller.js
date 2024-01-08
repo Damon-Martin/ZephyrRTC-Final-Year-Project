@@ -1,23 +1,32 @@
 const mongoose = require('mongoose');
-const { AuthSchema } = require('../models/auth-table');
+const { AuthModels } = require('../models/auth-table');
 
 // Manipulating DB
 class AuthController {
-    constructor(db_context) {
-        this.db_context = db_context;
-        this.RegistrationModel = mongoose.model('AuthTable', AuthSchema)
-    }
 
     async register(req, res) {
-        
-        let registerUser = new this.RegistrationModel({
-            username: "test@email.com",
-            password: "strong_pass",
-            accessToken: "mockJWT",
-            tokenTTL: Date.now(),
-        });
+        try {
+            const { username, password } = req.body;
 
-        res.status(200).json(registerUser.toJSON());
+            // Username Field Checks
+            let isRegFieldsNull = username != null && password != null;
+            let isRegFieldsEmpty = username.length != 0 && password.length != 0;
+
+            if (isRegFieldsNull && isRegFieldsEmpty) {
+
+                const regData = new AuthModels({ username, password });
+                const savedSong = await regData.save();
+                
+                res.status(200).json(`${username} ${savedSong}`);
+            }
+            else {
+                res.status(400).json(`Empty Username or Password`);
+            }
+        }
+        catch (e) {
+            res.status(400).json(`Wrong Login Schema or Mongoose Error: ${e}`);
+        }
+        
     }
 
     async login(req, res) {
