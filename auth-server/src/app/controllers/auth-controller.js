@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const AuthModel = require('../models/auth-table')
-const { AuthSchema } = require('../models/auth-table');
+const { AuthModels } = require('../models/auth-table');
 
 // Manipulating DB
 class AuthController {
@@ -14,14 +13,18 @@ class AuthController {
             let isRegFieldsEmpty = username.length != 0 && password.length != 0;
 
             if (isRegFieldsNull && isRegFieldsEmpty) {
-                res.status(200).json(`There is a username ${username} ${password}`);
+
+                const regData = new AuthModels({ username, password });
+                const savedSong = await regData.save();
+                
+                res.status(200).json(`${username} ${savedSong}`);
             }
             else {
                 res.status(400).json(`Empty Username or Password`);
             }
         }
         catch (e) {
-            res.status(400).json(`Wrong Login Schema in POST REQ most likely`);
+            res.status(400).json(`Wrong Login Schema or Mongoose Error: ${e}`);
         }
         
     }
