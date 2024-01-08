@@ -3,18 +3,12 @@ const { AuthSchema } = require('../models/auth-table');
 
 // Manipulating DB
 class AuthController {
-    constructor(db_context) {
-        this.db_context = db_context;
-        this.RegistrationModel = mongoose.model('AuthTable', AuthSchema)
-    }
 
     async register(req, res) {
         
         let registerUser = new this.RegistrationModel({
             username: "test@email.com",
-            password: "strong_pass",
-            accessToken: "mockJWT",
-            tokenTTL: Date.now(),
+            password: "strong_pass"
         });
 
         res.status(200).json(registerUser.toJSON());
