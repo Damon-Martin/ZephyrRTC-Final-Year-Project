@@ -30,7 +30,7 @@ class AuthController {
                 const TokenDb = new TokenModels({token});
                 await TokenDb.save();
 
-                res.status(200).json(`${token}`);
+                res.status(200).json({token: token});
             }
             else {
                 res.status(400).json(`Empty Username or pass`);
@@ -47,6 +47,7 @@ class AuthController {
         try {
             const uName = req.body.username;
             const pass = req.body.password;
+            const rememberMe = req.body.rememberMe; // true or false
 
             const userObj = await AuthModels.findOne({ "username": uName }).exec();
             
@@ -54,27 +55,34 @@ class AuthController {
             if (userObj) {
                 // Checking pass
                 if (pass === userObj.password) {
-                    // Issue new token
-                    const token = jwt.sign({ uName }, secret_signing_key, { algorithm: 'HS256', expiresIn: '12h' });
+                    
+                    // Short Expiry Date
+                    let token = jwt.sign({ uName }, secret_signing_key, { algorithm: 'HS256', expiresIn: '1m' });
+                    
+                    // Long Expiry Date
+                    if (rememberMe === true) {
+                        token = jwt.sign({ uName }, secret_signing_key, { algorithm: 'HS256', expiresIn: '12h' });
+                    } 
+                    
                     const TokenDb = new TokenModels({token});
                     await TokenDb.save();
 
                     // Token Returned with Username
-                    res.status(200).json(token);
+                    res.status(200).json({token: token});
                 }
                 // Wrong pass
                 else {
-                    res.status(401).json({error: "Username or password is Incorrect"});
+                    res.status(401).json({Error: "Username or password is Incorrect"});
                 }
             } 
             // User Doesn't Exist
             else {
-                res.status(401).json({error: "Username or password is Incorrect"});
+                res.status(401).json({ Error: "Username or password is Incorrect"});
             }
         } 
         // Complete Failure: Mongoose
         catch (e) {
-            res.status(500).json(`Error: Mongoose Completely Failed ${e.message}`);
+            res.status(500).json({ Error: "Mongoose Completely Failed ${e.message}"});
         }
     }
 
@@ -82,34 +90,12 @@ class AuthController {
     // No Info given to client
     async isTokenValid(req, res) {
         try {
-            const givenToken = req.body.token;
-
-            const tokenDB = await TokenModels.findOne({ "token": givenToken }).exec();
-
-            // Exact Token Exists: It's signature is ok by defualt as it's already hashed in db
-            if (tokenDB) {
-                let isExpired = false;
-                // Is Token Expired: Checking IAT and EXP dates
-                if (!isExpired) {
-                    res.status(200).json(tokenDB);
-                }
-                // Expired
-                else {
-                    res.status(401).json(`Token Invalid`);
-                }
-            }
-            // Token doesn't exist
-            else {
-                res.status(401).json(`Token Invalid`);
-            }
+            jwt.verify(req.body.token, secret_signing_key)
+            res.status(200).json({ token: req.body.token });
         }
-        catch (e) {
-            res.status(500).json(`Server Error Reading Token: ${e}`);
+        catch {
+            res.status(401).json({ Error: "Token Invalid: Please Re-Login" })
         }
-    }
-
-    async passHasher() {
-
     }
 };
 
