@@ -82,30 +82,30 @@ class AuthController {
     // No Info given to client
     async isTokenValid(req, res) {
         try {
-            const { givenToken } = req.body;
+            const givenToken = req.body.token;
 
             const tokenDB = await TokenModels.findOne({ "token": givenToken }).exec();
+
+            // Exact Token Exists: It's signature is ok by defualt as it's already hashed in db
             if (tokenDB) {
-
+                let isExpired = false;
+                // Is Token Expired: Checking IAT and EXP dates
+                if (!isExpired) {
+                    res.status(200).json(tokenDB);
+                }
+                // Expired
+                else {
+                    res.status(401).json(`Token Invalid`);
+                }
             }
+            // Token doesn't exist
             else {
-
+                res.status(401).json(`Token Invalid`);
             }
         }
         catch (e) {
-
+            res.status(500).json(`Server Error Reading Token: ${e}`);
         }
-        // Recieves Token
-        // Validates Signature with satus code 200
-
-        // Check if token exists
-
-        // Check Signature
-
-        // Check 'iat' or 'exp' are different
-
-        // Check if expired
-
     }
 
     async passHasher() {
