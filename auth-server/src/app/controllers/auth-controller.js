@@ -24,7 +24,7 @@ class AuthController {
                 await regDb.save();
                 
 
-                const token = jwt.sign({ username }, secret_signing_key, { expiresIn: '12h' });
+                const token = jwt.sign({ username }, secret_signing_key, { algorithm: 'HS256', expiresIn: '12h' });
                 const TokenDb = new TokenModels({token});
                 await TokenDb.save();
 
@@ -52,7 +52,7 @@ class AuthController {
                 // Checking Password
                 if (password === userObj.password) {
                     // Issue new token
-                    const token = jwt.sign({ username }, secret_signing_key, { expiresIn: '12h' });
+                    const token = jwt.sign({ username }, secret_signing_key, { algorithm: 'HS256', expiresIn: '12h' });
                     const TokenDb = new TokenModels({token});
                     await TokenDb.save();
 
@@ -100,7 +100,7 @@ class AuthController {
         // Check Signature
 
         // Check 'iat' or 'exp' are different
-        
+
         // Check if expired
 
     }
