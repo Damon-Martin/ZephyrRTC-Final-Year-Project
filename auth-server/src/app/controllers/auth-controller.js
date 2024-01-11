@@ -4,10 +4,12 @@ const jwt = require('jsonwebtoken');
 const { AuthModels } = require('../models/auth-table');
 const { TokenModels } = require('../models/tokens-table');
 
+const secret_signing_key = `81N*(LMsjns":123213]{]1231231skKKmsx}`;
 
 // Manipulating DB
 class AuthController {
 
+    // Adds user + pass to auth collection and makes a token into token db. Also, sent to user.
     async register(req, res) {
         try {
             const { username, password } = req.body;
@@ -22,7 +24,7 @@ class AuthController {
                 await regDb.save();
                 
 
-                const token = jwt.sign({ username }, 'secret_key_9381', { expiresIn: '12h' });
+                const token = jwt.sign({ username }, secret_signing_key, { expiresIn: '12h' });
                 const TokenDb = new TokenModels({token});
                 await TokenDb.save();
 
@@ -38,11 +40,69 @@ class AuthController {
         
     }
 
+    // Based on username + password. Return token if good or bad.
     async login(req, res) {
-        res.status(200).json({
-            "JWT": "MockJWT",
-            "TTL": new Date('10/05/23')
-        });
+        try {
+            const { username, password } = req.body;
+
+            const userObj = await AuthModels.findOne({ "username": username }).exec();
+            
+            // User exists
+            if (userObj) {
+                // Checking Password
+                if (password === userObj.password) {
+                    // Issue new token
+                    const token = jwt.sign({ username }, secret_signing_key, { expiresIn: '12h' });
+                    const TokenDb = new TokenModels({token});
+                    await TokenDb.save();
+
+                    // Token Returned with Username
+                    res.status(200).json(token);
+                }
+                // Wrong Password
+                else {
+                    res.status(401).json({error: "Username or Password is Incorrect"});
+                }
+            } 
+            // User Doesn't Exist
+            else {
+                res.status(401).json({error: "Username or Password is Incorrect"});
+            }
+        } 
+        // Complete Failure: Mongoose
+        catch (e) {
+            res.status(500).json(`Error: Mongoose Completely Failed ${e.message}`);
+        }
+    }
+
+    // User gives token to Backend. Token given to Auth Server. This Validates its authentic. Informs Server.
+    // No Info given to client
+    async isTokenValid(req, res) {
+        try {
+            const { givenToken } = req.body;
+
+            const tokenDB = await TokenModels.findOne({ "token": givenToken }).exec();
+            if (tokenDB) {
+
+            }
+            else {
+
+            }
+        }
+        catch (e) {
+
+        }
+        // Recieves Token
+        // Validates Signature with satus code 200
+
+        // Check if token exists
+
+        // Check Signature
+
+        // Check 'iat' or 'exp' are different
+        
+        // Check if expired
+
     }
 };
 
