@@ -7,6 +7,7 @@ services:
     build:
       context: ./auth-server
       dockerfile: .Dockerfile
+    container_name: Auth-Server
     ports:
       - "3500:3000"
     depends_on:
@@ -18,6 +19,7 @@ services:
     build:
       context: ./back-end
       dockerfile: .Dockerfile
+    container_name: Back-End
     ports:
       - "4000:3000"
 
@@ -28,6 +30,7 @@ services:
     build:
       context: ./front-end
       dockerfile: .Dockerfile
+    container_name: Front-End
     ports:
       - "3000:3000"
   
@@ -35,6 +38,7 @@ services:
   mongo-db:
     image: mongo
     restart: always
+    container_name: Databases
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: strong_password
@@ -47,6 +51,7 @@ services:
     build:
       context: ./nginx
       dockerfile: .Dockerfile
+    container_name: Reverse-Proxy
     ports:
       - "80:80"
       - "443:443"
