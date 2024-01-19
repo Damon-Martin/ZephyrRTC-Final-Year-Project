@@ -28,6 +28,16 @@ class AuthRouter {
                 res.status(500).send({ e: 'Internal Server Error' });
             }
         });
+
+        this.router.get('/check-token', async (req, res) => {
+            try {
+                await authController.isTokenValid(req, res);
+            } 
+            catch (e) {
+                console.error(e);
+                res.status(500).send({ e: 'Internal Server Error' });
+            }
+        });
     }
 }
 
